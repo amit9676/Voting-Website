@@ -1,0 +1,32 @@
+<div style='background-color: rgb(53, 121, 153); height: 100%;' (window:resize)="onResize($event)">
+    <div *ngIf='pageLoad && !errorPage' style='height: 100%;'>
+        <div [ngStyle]="{'width': cond ? '50%' : '100%', 'right': cond ? '25%' : '0'}" style='height: 50px; background-color: rgba(220,220,220,0.7); position: relative;'>
+            <div style='position: relative; top: 50%; transform: translate(0,-50%); display: inline-block;  text-align: left;' class='col-12'>
+                <span style='margin-right: 15px; float: right;'>שלום {{hasVoted.firstName}}</span>
+                <ul style='list-style: none; display: inline; justify-content: space-evenly;'>
+                    <li style='padding-left: 20px; display: inline;'><a routerLink='/vote-screen/sign-up'>ערוך פרופיל</a></li>
+                    <li style='display: inline;'><a (click)='logOut()' routerLink='/vote-screen/sign-in'>התנתק</a></li>
+                </ul>
+            </div>
+        </div>
+        <div   class='signUpDiv col-xl-6 col-10 col-md-8'>
+            <br>
+            <span style='margin-left: 8px;'>בחר מפלגה: </span>
+            <select #chosenParty ><option *ngFor='let item of parties' [value]='item.id'>{{item.name}}</option></select>
+            <br><br>
+            <div *ngIf='hasVoted.votedTo'>
+                <span style='color: rgb(250, 59, 59);'>אתה כבר הצבעת!</span>
+                <br>
+            </div>
+            <button [disabled]='hasVoted.votedTo' (click)='voted(chosenParty)' style='color: rgb(24, 116, 32); margin-bottom: 10px;'>הצבע!</button>
+        </div>
+    </div>
+
+    <div *ngIf='!pageLoad && !errorPage' style='width: 15%; position: relative; right: 50%; top: 50%; transform: translate(50%,-50%);  background-color: rgba(220,220,220,0.7); border-radius: 15px;'>
+        <img style='width: 100%' src="/assets/images/loading2.gif">
+    </div>
+    <div *ngIf='errorPage' style="background-color: rgba(255, 255, 255, 0.8); text-align: center;">
+        <span dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+    </div>
+</div>
+

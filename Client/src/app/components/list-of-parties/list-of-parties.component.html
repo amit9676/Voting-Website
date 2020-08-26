@@ -1,0 +1,32 @@
+<div style='background-color: rgba(220,220,220,0.7); width: 100%; height: 100%;'>
+    <div *ngIf='pageLoad && !errorPage' class='signUpDiv col-md-12 d-md-flex ' dir='rtl' style='justify-content: space-evenly; overflow-y: scroll;'>
+
+        <div style='margin-top: 8px; background-color: rgba(220, 20, 60, 0.486);' class='col-md-2'>
+            <label>שם מפלגה:</label>
+            <input (input)='search()' [(ngModel)]='partyToSearch.name' style='width: 100%; margin-top: -10px;  margin-bottom: -20px;' type='text' placeholder="חפש מפלגה">
+
+            <br><br>
+
+            <label>תיאור:</label>
+            <textarea (input)='search()' [(ngModel)]='partyToSearch.description' style='width: 100%; margin-top: -10px; margin-bottom: 10px;' rows="3" type='text' placeholder="הכנס תיאור מפלגה או חלק ממנו"></textarea>
+        </div>
+
+
+        <div style='display: inline-block;' class='d-none d-md-block col-md-5'>
+            <div *ngFor='let item of selectedOddParties; let i index'><app-individual-party [party]='i'></app-individual-party></div>
+        </div>
+        <div style='display: inline-block;' class='d-none d-md-block col-md-5'>
+            <div *ngFor='let item of selectedEvenParties; let i index'><app-individual-party [party]='i'></app-individual-party></div>
+        </div>
+        <div class='d-block d-md-none col-12'>
+            <div *ngFor='let item of selectedParties; let i index'><app-individual-party [party]='i'></app-individual-party></div>
+        </div>
+    </div>
+
+    <div *ngIf='!pageLoad && !errorPage' style='width: 15%; position: relative; right: 50%; top: 50%; transform: translate(50%,-50%); background-color: rgba(220, 20, 60, 0.486); border-radius: 15px;'>
+        <img style='width: 100%' src="/assets/images/loading2.gif">
+    </div>
+    <div *ngIf='errorPage' style="background-color: rgba(255, 255, 255, 0.8); text-align: center;">
+        <span dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+    </div>
+</div>

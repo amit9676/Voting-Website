@@ -1,0 +1,31 @@
+.a{
+    height: 100%;
+    width: 100%;
+    background-color: aqua;
+    direction: rtl;
+}
+div{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#top
+{
+    background-color:blue;
+    height:150px;
+}
+#bottom{
+    background-color:green;
+    height:calc(100vh - 150px - 0px);
+}
+
+
+
+.somediv{
+    --someheight: 300px;
+    --coli: rgb(238, 184, 184);
+    background-color: var(--coli);
+    height: var(--someheight);
+}

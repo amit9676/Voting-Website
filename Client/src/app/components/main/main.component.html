@@ -1,0 +1,26 @@
+<div class='a' (window:resize)="onResize($event)">
+    <div style=' background-color: blueviolet; width: 100%;' class='row'>
+        
+        <div style='background-color: coral; height: 100px; text-align: center;' class='col-12 col-md-4 col-xl-6 container'>
+            <div style='position: relative; top: 50%; transform: translateY(-50%);'>
+                <span>עמוד בחירות</span>
+            </div>
+        </div>
+        
+
+        <div [ngStyle]="{'height': cond ? '100px' : '50px'}" style='background-color: rgb(11, 51, 31); text-align: center;' class='col-12 col-md-8 col-xl-6'>
+            <app-menu></app-menu>
+        </div>
+
+        <!--<div style='background-color: rgb(255, 80, 80); text-align: center;' class='col-12 d-md-none  container'>
+            <div style='position: relative; top:50%; transform: translateY(-50%); height: 50px;'>
+                <app-menu></app-menu>
+            </div>
+        </div>-->
+    </div>
+
+    <div  style='background-color: rgb(53, 121, 153);' [ngStyle]="{'height': cond ? 'calc(100vh - 100px - 0px)' : 'calc(100vh - 150px - 0px)'}">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

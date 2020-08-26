@@ -1,0 +1,14 @@
+<div style='background-color: green; width: 100%; height: 100%;'>
+    <div *ngIf='pageLoad && !errorPage'  class='signUpDiv col-xl-6 col-10 col-md-8'>
+        <br>
+        <h3 style='margin-left: 8px;'>מצב הצבעה נוכחי: </h3>
+        <span *ngFor='let item of parties'>{{item.name}}: {{item.votes}}<br></span>
+    </div>
+
+    <div *ngIf='!pageLoad && !errorPage' style='width: 15%; position: relative; right: 50%; top: 50%; transform: translate(50%,-50%); background-color: rgba(220,220,220,0.7); border-radius: 15px;'>
+        <img style='width: 100%' src="/assets/images/loading2.gif">
+    </div>
+    <div *ngIf='errorPage' style="background-color: rgba(255, 255, 255, 0.8); text-align: center;">
+        <span dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+    </div>
+</div>

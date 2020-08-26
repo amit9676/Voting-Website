@@ -1,0 +1,26 @@
+<div dir="rtl" style='width: 100%; background-color: rgba(0, 128, 68, 0.712); margin-top: 15px; border-radius: 15px; margin-bottom: 15px;'>
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6' style='text-align: right; padding: 8px; display: inline-block;' >
+        <span style='margin: 8px'>{{voter.id}}.</span>
+        <span>שם המצביע: {{voter.firstName}} {{voter.lastName}}</span>
+    </div>
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6 text-right text-sm-left text-md-right text-xl-left' style='padding: 8px;  display: inline-block;' >
+        <span style='margin: 8px'>מספר זהות: {{voter.socialNumber}}</span>
+    </div>
+
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6' style='text-align: right; padding: 8px; display: inline-block;' >
+        <span style='margin: 8px'>מין: {{voter.gender}}</span>
+    </div>
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6 text-right text-sm-left text-md-right text-xl-left' style='padding: 8px;  display: inline-block;' >
+        <span style='margin: 8px'>מספר טלפון: {{voter.phone}}</span>
+    </div>
+
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6' style='text-align: right; padding: 8px; display: inline-block;' >
+        <span style='margin: 8px'>מייל: {{voter.email}}</span>
+    </div>
+    <div class='col-12 col-sm-6 col-md-12 col-xl-6 text-right text-sm-left text-md-right text-xl-left' style='padding: 8px;  display: inline-block;' >
+        <span style='margin: 8px'>עיר מגורים: {{voter.city}}</span>
+    </div>
+    <div class='col-12 text-center' style='padding: 8px;  display: inline-block;' >
+        <span style='margin: 8px'>{{voter.votedTo.name | noVoted}}</span>
+    </div>
+</div>

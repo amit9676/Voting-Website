@@ -1,0 +1,17 @@
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\03 - Business Logic Layer.dll.config
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\03 - Business Logic Layer.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\03 - Business Logic Layer.pdb
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\01 - Data Access Layer.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\02 - Data Transfer Objects.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\EntityFramework.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\EntityFramework.SqlServer.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\01 - Data Access Layer.pdb
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\01 - Data Access Layer.dll.config
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\02 - Data Transfer Objects.pdb
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\EntityFramework.xml
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\bin\Debug\EntityFramework.SqlServer.xml
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\obj\Debug\03 - Business Logic Layer.csprojAssemblyReference.cache
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\obj\Debug\03 - Business Logic Layer.csproj.CoreCompileInputs.cache
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\obj\Debug\03 - Business Logic Layer.csproj.CopyComplete
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\obj\Debug\03 - Business Logic Layer.dll
+E:\visualstudio\voting site\Server\Server\03 - Business Logic Layer\obj\Debug\03 - Business Logic Layer.pdb

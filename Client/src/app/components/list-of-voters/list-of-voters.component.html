@@ -1,0 +1,63 @@
+<div style='background-color: rgba(220,220,220,0.7); width: 100%; height: 100%;' (window:resize)="onResize($event)">
+
+    <div *ngIf='pageLoad && !errorPage'  class='signUpDiv col-md-12 d-md-flex ' dir='rtl' style='justify-content: space-evenly; overflow-y: scroll;'>
+
+        <div *ngIf='!searchMode && !cond' style='padding-top: 10px;'><button (click)='searchMode = true'>חפש <img src='/assets/images/searchicon.png' style='height: 17px; width:17px;'></button></div>
+        <div *ngIf='(searchMode && !cond) || cond' style='margin-top: 8px; background-color: rgba(0, 128, 68, 0.521);' class='col-md-2'>
+
+            <div *ngIf='searchMode && !cond'>
+                <button (click)='searchMode = false; voterToSearch.firstName = ""; voterToSearch.lastName = ""; voterToSearch.phone = ""; voterToSearch.email = ""; voterToSearch.city=""; voterToSearch.socialNumber=""; this.voterToSearch.votedTo.name = "all"; search()' style='display: block; padding-top: 10px; position: relative; right: 50%; transform: translateX(50%);'>בטל חיפוש</button>
+                <br>
+            </div>
+            <label style='display: block;'>שם:</label>
+            <input (input)='search()' [(ngModel)]='voterToSearch.firstName' style='width: 45%; margin-top: -3px; float: right;' type='text' placeholder="שם פרטי">
+            <input (input)='search()' [(ngModel)]='voterToSearch.lastName' style='width: 45%; margin-top: -3px; float: left;' type='text' placeholder="שם משפחה">
+
+            <br><br>
+
+            <label>טלפון:</label>
+            <input (input)='search()' [(ngModel)]='voterToSearch.phone' style='width: 100%; margin-top: -10px;  margin-bottom: -20px;' type='tel' placeholder="חפש לפי טלפון">
+
+            <br><br>
+
+            <label>אימייל:</label>
+            <input (input)='search()' [(ngModel)]='voterToSearch.email' style='width: 100%; margin-top: -10px;  margin-bottom: -20px;' type='text' placeholder="חפש לפי אימייל">
+
+            <br><br>
+
+            <label>עיר:</label>
+            <input (input)='search()' [(ngModel)]='voterToSearch.city' style='width: 100%; margin-top: -10px; margin-bottom: -20px;' type='text' placeholder="חפש לפי עיר">
+
+            <br><br>
+
+            <label>ת.ז:</label>
+            <input (input)='search()' [(ngModel)]='voterToSearch.socialNumber' style='width: 100%; margin-top: -20px;' type='text' placeholder="חפש לפי תעודת זהות" class='mb-4'>
+
+            <br>
+            <label>מפלגה אליה הצביע:</label>
+            <select #givenVotedTo (input)='search(givenVotedTo)' style='margin-right: 10px;'>
+                <option value='all'>הכל</option>
+                <option [value]='item2.name' *ngFor='let item2 of parties'>{{item2.name}}</option>
+                <option value='none'>לא הצביע</option>
+            </select>
+        </div>
+
+        <div style='display: inline-block;' class='d-none d-md-block col-md-5'>
+            <div *ngFor='let item of selectedOddVoters; let i index'><app-individual-voter [voter]='i'></app-individual-voter></div>
+        </div>
+        <div style='display: inline-block;' class='d-none d-md-block col-md-5'>
+            <div *ngFor='let item of selectedEvenVoters; let i index'><app-individual-voter [voter]='i'></app-individual-voter></div>
+        </div>
+        <div class='d-block d-md-none col-12'>
+            <div *ngFor='let item of selectedVoters; let i index'><app-individual-voter [voter]='i'></app-individual-voter></div>
+        </div>
+    </div>
+
+    <div *ngIf='!pageLoad && !errorPage' style='width: 15%; position: relative; right: 50%; top: 50%; transform: translate(50%,-50%); background-color: rgba(0, 128, 68, 0.521); border-radius: 15px;'>
+        <img style='width: 100%' src="/assets/images/loading2.gif">
+    </div>
+    <div *ngIf='errorPage' style="background-color: rgba(255, 255, 255, 0.8); text-align: center;">
+        <span dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+    </div>
+
+</div>

@@ -1,0 +1,12 @@
+.signUpDiv{
+    position: relative;
+    background-color: rgba(220,220,220,0.7);
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    border-radius: 15px;
+    color: rgb(22, 47, 85);
+    text-align: center;
+    font-weight: bold;
+    
+}

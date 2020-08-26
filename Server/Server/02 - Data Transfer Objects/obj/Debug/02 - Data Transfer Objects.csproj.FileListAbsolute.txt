@@ -1,0 +1,6 @@
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\bin\Debug\02 - Data Transfer Objects.dll
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\bin\Debug\02 - Data Transfer Objects.pdb
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\obj\Debug\02 - Data Transfer Objects.csprojAssemblyReference.cache
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\obj\Debug\02 - Data Transfer Objects.csproj.CoreCompileInputs.cache
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\obj\Debug\02 - Data Transfer Objects.dll
+E:\visualstudio\voting site\Server\Server\02 - Data Transfer Objects\obj\Debug\02 - Data Transfer Objects.pdb

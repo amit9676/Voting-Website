@@ -1,0 +1,17 @@
+<div style='background-color: rgb(53, 121, 153); height: 100%;'>
+    <div class='signUpDiv col-xl-6 col-10 col-md-8'>
+        <form #formInfo='ngForm'>
+            <label>תעודת זהות:</label>
+            <input [(ngModel)]='socialNumber' type='text' name='social'>
+            <br>
+            <label>תאריך הנפקה:</label>
+            <input [(ngModel)]='issueDate' type='date' (input)='checkDate()' name='issue'>
+            <br>
+            <button *ngIf='pageLoad && !errorPage' (click)='logIn()'>התחבר</button>
+            <img *ngIf='!pageLoad && !errorPage' style='width: 40px; position: relative;' src="/assets/images/loading2.gif">
+            <span *ngIf='errorPage' dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+            <br *ngIf='pageLoad && !errorPage'><br *ngIf='pageLoad && !errorPgae'>
+            <span *ngIf='pageLoad && !errorPage' style='text-align: right;'>אין משתמש? הירשם <a routerLink='/vote-screen/sign-up'>כאן</a></span>
+        </form>
+    </div>
+</div>

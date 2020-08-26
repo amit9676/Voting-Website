@@ -1,0 +1,56 @@
+<div style='background-color: rgb(53, 121, 153); height: 100%; overflow-y: auto;' (window:resize)="onResize($event)">
+    <div class='signUpDiv col-xl-6 col-10 col-md-8 mt-7 mt-md-0' [ngStyle]="{'transform': cond ? 'translate(50%, -50%)' : 'translate(50%, -45%)'}" style='overflow-y: auto;'>
+        <form #formInfo='ngForm'>
+            <div style='height: 100%; display: inline-block; text-align: right;' class='col-12 col-md-6'>
+                <label>שם פרטי:</label>
+                <input (focus)='focusMode[0] = true' (blur)='focusMode[0] = false' [ngStyle]="{'border-color': (firstNameInfo.invalid && !focusMode[0]) ? 'red' : (firstNameInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #firstNameInfo="ngModel" required name="first_name" pattern="^[א-ת, ]{2,}$" maxlength="30" placeholder="נא להכניס שם בעברית בלבד" [(ngModel)]="newVoter.firstName" type='text'>
+                <label>תעודת זהות:</label>
+                <input (focus)='focusMode[1] = true' (blur)='focusMode[1] = false' (input)='validatedSocialNumber = dataValidation("socialNumber")' [ngStyle]="{'border-color': ((socialNumberInfo.invalid && !focusMode[1]) || (!validatedSocialNumber)) ? 'red' : (socialNumberInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #socialNumberInfo="ngModel" required name="social_number" pattern="[0-9]{9}" maxlength="9" placeholder="נא להכניס מספר זהות הכולל 9 ספרות" [(ngModel)]="newVoter.socialNumber" type='text'>
+                <label>מספר טלפון:</label>
+                <input (focus)='focusMode[2] = true' (blur)='focusMode[2] = false' (input)='validatedPhone = dataValidation("phone")' [ngStyle]="{'border-color': ((phoneInfo.invalid && !focusMode[2]) || (!validatedPhone)) ? 'red' : (phoneInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #phoneInfo="ngModel" required name="phone_number" pattern="[0-9]{9,10}" maxlength="10" placeholder="נא להכניס מספר טלפון קווי או נייד" [(ngModel)]="newVoter.phone" type='tel'>
+                <label>תאריך הנפקת ת.ז:</label>
+                <input (focus)='focusMode[6] = true' (blur)='focusMode[6] = false' (input)='isFuture = checkDate(issueDateInfo)' (input)='newVoter.socialNumberIssueDate = editDate(issueDateInfo)' value='{{checkYearInput(getYear(newVoter.socialNumberIssueDate))}}-{{getMonth(newVoter.socialNumberIssueDate)}}-{{getDay(newVoter.socialNumberIssueDate)}}' #issueDateInfo [ngStyle]="{'border-color': (isFuture) ? 'red' : (newVoter.socialNumberIssueDate ? 'green' :'rgb(118, 118, 118)')}" required name='dateOfSocial' type='date'>
+            </div>
+
+            <div style='height: 100%; display: inline-block; text-align: right; ' class='col-12 col-md-6 mt-2 mt-md-0'>
+               <label>שם משפחה:</label>
+                <input (focus)='focusMode[3] = true' (blur)='focusMode[3] = false' [ngStyle]="{'border-color': (lastNameInfo.invalid && !focusMode[3]) ? 'red' : (lastNameInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #lastNameInfo="ngModel" required name="last_name" pattern="^[א-ת, ]{2,}$" maxlength="30" placeholder="נא להכניס שם בעברית בלבד" [(ngModel)]="newVoter.lastName"  type='text'>
+                <label>מין:</label>
+                <select [(ngModel)]='newVoter.gender' name='voter_gender' style='border-color: green;'>
+                    <option value='זכר'>זכר</option>
+                    <option value='נקבה'>נקבה</option>
+                </select>
+                <label>אימייל:</label>
+                <input (focus)='focusMode[4] = true' (blur)='focusMode[4] = false' (input)='validatedEmail = dataValidation("email")' [ngStyle]="{'border-color': ((emailInfo.invalid && !focusMode[4]) || !validatedEmail) ? 'red' : (emailInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #emailInfo="ngModel" required name="email_address" pattern="^\w*@{1}\w*(\.com|\.co\.il)$" placeholder="הכנס אימייל כ-a@b.com/co.il" [(ngModel)]="newVoter.email" type='text'>
+                <label>עיר מגורים:</label>
+                <input (focus)='focusMode[5] = true' (blur)='focusMode[5] = false' [ngStyle]="{'border-color': (cityInfo.invalid && !focusMode[5]) ? 'red' : (cityInfo.valid ? 'green' : 'rgb(118, 118, 118)')}" #cityInfo="ngModel" required name="city_name" pattern="^[א-ת, ]{2,}$" maxlength="30" placeholder="נא להכניס עיר בעברית בלבד" [(ngModel)]="newVoter.city" type='text'>
+            </div>
+            <br>
+            <span *ngIf='firstNameInfo.invalid && !focusMode[0]' style='display: block; color: rgb(248, 45, 45);'>שם פרטי אינו תקני, חייב להיות בעברית בלבד ומעל 2 תווים.</span>
+            <span *ngIf='lastNameInfo.invalid && !focusMode[3]' style='display: block; color: rgb(248, 45, 45);'>שם משפחה אינו תקני, חייב להיות בעברית בלבד ומעל 2 תווים.</span>
+            <span *ngIf='socialNumberInfo.invalid && !focusMode[1]' style='display: block; color: rgb(248, 45, 45);'>מספר זהות אינו תקני, חייב לכלול 9 ספרות.</span>
+            <span *ngIf='phoneInfo.invalid && !focusMode[2]' style='display: block; color: rgb(248, 45, 45);'>מספר טלפון אינו תקני, חייב לכלול 9 או 10 ספרות.</span>
+            <span *ngIf='emailInfo.invalid && !focusMode[4]' style='display: block; color: rgb(248, 45, 45);'>אימייל לא תקני, חייב להיכתב כ-'a@b.com / a@b.co.il'.</span>
+            <span *ngIf='cityInfo.invalid && !focusMode[5]' style='display: block; color: rgb(248, 45, 45);'>נא הכנס עיר בעברית בלבד</span>
+            <span *ngIf='isFuture' style='display: block; color: rgb(248, 45, 45);'>תאריך הנפקת תעודת זהות לא יכול להיות בעתיד</span>
+            <span *ngIf='!validatedSocialNumber' style='display: block; color: rgb(248, 45, 45);'>מספר הזהות כבר נמצא בשימוש.</span>
+            <span *ngIf='!validatedEmail' style='display: block; color: rgb(248, 45, 45);'>אימייל זה כבר נמצא בשימוש.</span>
+            <span *ngIf='!validatedPhone' style='display: block; color: rgb(248, 45, 45);'>מספר טלפון זה כבר נמצא בשימוש.</span>
+
+
+            <img *ngIf='!pageLoad && !errorPage' style='width: 40px; position: relative;' src="/assets/images/loading2.gif">
+            <span *ngIf='errorPage' dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+            
+            <button *ngIf='loggedVoter' routerLink='/vote-screen/vote-page' style='margin-top: 5px; margin-bottom: 5px; float: right; margin-left: -25px;'>חזור</button>
+            <button *ngIf='pageLoad && !errorPage' [disabled]="formInfo.form.invalid || isFuture ||!newVoter.socialNumberIssueDate || !validatedSocialNumber || !validatedEmail || !validatedPhone" (click)='editOrSign()' style='margin-top: 5px; margin-bottom: 5px;'>{{button}}</button>
+            <span *ngIf='!loggedVoter && pageLoad && !errorPage' style="display: block;">יש כבר משתמש? <a routerLink='/vote-screen/sign-in'>התחבר</a></span>
+        </form>
+    </div>
+
+    <!--<div *ngIf='!pageLoad && !errorPage' style='width: 15%; position: relative; right: 50%; top: 50%; transform: translate(50%,-50%); background-color: rgba(220,220,220,0.7); border-radius: 15px;'>
+        <img style='width: 100%' src="/assets/images/loading2.gif">
+    </div>
+    <div *ngIf='errorPage' style="background-color: rgba(255, 255, 255, 0.8); text-align: center;">
+        <span dir='rtl' style='color: red; font-size: x-large; font-weight: bold;'>שגיאה!</span>
+    </div>-->
+</div>
